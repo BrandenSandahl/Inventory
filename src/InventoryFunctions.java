@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class InventoryFunctions {
 
 
-// Set up Vars
-static Scanner scanner = new Scanner(System.in);
+    // Set up Vars
+    static Scanner scanner = new Scanner(System.in);
 
 
     public static void displayInventory() {
@@ -73,8 +73,15 @@ static Scanner scanner = new Scanner(System.in);
         System.out.println("Which item number would you like to update?");
         int updateNumber = Integer.parseInt(scanner.nextLine());
         updateNumber--;
-        System.out.println("What do you want to change the quantity of " + Inventory.items.get(updateNumber).getItem() + " to be set to?");
-        int updateQuantity = Integer.parseInt(scanner.nextLine());
+        boolean isValid = false;
+        int updateQuantity;
+        do {
+            System.out.println("What do you want to change the quantity of " + Inventory.items.get(updateNumber).getItem() + " to be set to?");
+            updateQuantity = Integer.parseInt(scanner.nextLine());
+            if (updateQuantity >= 0) {
+                isValid = true;
+            }
+        } while (!isValid);
         Inventory.items.get(updateNumber).setCount(updateQuantity);
     }
 

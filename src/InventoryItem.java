@@ -4,10 +4,9 @@
 public class InventoryItem {
 
 
-// Set up Vars
-    String item;
-    int count;
-
+    // Set up Vars
+    private String item;
+    private int count;
 
 
 // Constructors if used
@@ -18,7 +17,9 @@ public class InventoryItem {
         setCount(count);
     }
 
-    /** Start Getters and Setters */
+    /**
+     * Start Getters and Setters
+     */
     public String getItem() {
         return item;
     }
@@ -32,8 +33,9 @@ public class InventoryItem {
     }
 
     public void setCount(int count) {
-        this.count = count;
-    }
-    /** End of Getters and Setters */
+            this.count = count;
+        }
+
+        /** End of Getters and Setters */
 
 }
