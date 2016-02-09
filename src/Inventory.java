@@ -8,7 +8,7 @@ public class Inventory {
     static ArrayList<InventoryItem> items = new ArrayList<>();
 
 
-    public static void main (String[] args) {
+    public static void main (String[] args) throws ClassNotFoundException {
 
 
 

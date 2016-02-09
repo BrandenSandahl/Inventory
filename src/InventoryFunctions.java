@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -8,9 +10,10 @@ public class InventoryFunctions {
 
     // Set up Vars
     static Scanner scanner = new Scanner(System.in);
+    static final String[] CATEGORIES = {"Beer", "Food", "Liquor", "Merchandise", "Wine"};
 
 
-    public static void displayInventory() {
+    public static void displayInventory() throws ClassNotFoundException {
         int i = 1;
         for (InventoryItem item : Inventory.items) {
             System.out.println(i + ". " + "[" + item.getCount() + "] " + item.getItem());
@@ -42,7 +45,7 @@ public class InventoryFunctions {
         }
     }
 
-    public static void enterItem() {
+    public static void enterItem() throws ClassNotFoundException {
         //item
         System.out.println("Please enter the item description");
         String itemDescription = scanner.nextLine();
@@ -57,7 +60,25 @@ public class InventoryFunctions {
                 isValid = true;
             }
         } while (!isValid);
-        Inventory.items.add(new InventoryItem(itemDescription, itemQuantity));
+        System.out.println("Please choose an item category");
+        displayCategories();
+        String category = CATEGORIES[Integer.parseInt(scanner.nextLine()) - 1]; //this is a pretty crazy line. Doing a lot of stuff in one line. Too much? maybe.
+
+
+        /**
+         * None of this shit works.
+        // Class c = Class.forName(category);
+
+        //System.out.println(Class.forName(category));
+        //System.out.println(category);
+
+        //Class.forName(CATEGORIES[Integer.parseInt(scanner.nextLine())]);
+
+       // Inventory.items.add(new c(itemDescription, itemQuantity));
+
+       // Inventory.items.add(new InventoryItem(itemDescription, itemQuantity));
+
+         */
     }
 
     //Consider making a GET ITEM BY NUMBER type method
@@ -83,6 +104,13 @@ public class InventoryFunctions {
             }
         } while (!isValid);
         Inventory.items.get(updateNumber).setCount(updateQuantity);
+    }
+
+    public static void displayCategories() {
+        System.out.println("Item Categories: ");
+        for (int i = 0; i < CATEGORIES.length; i++) {
+            System.out.printf("%d.\t %s%n", (i + 1), CATEGORIES[i]);
+        }
     }
 
     public static void exitProgram() {
