@@ -7,9 +7,14 @@ public class InventoryItem {
     // Set up Vars
     private String item;
     private int count;
+    private String category;
 
 
 // Constructors if used
+
+    public InventoryItem() {
+
+    }
 
 
     public InventoryItem(String item, int count) {
@@ -36,6 +41,14 @@ public class InventoryItem {
             this.count = count;
         }
 
-        /** End of Getters and Setters */
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    /** End of Getters and Setters */
 
 }
