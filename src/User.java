@@ -40,7 +40,7 @@ public final class User {
 
     //log in control method
 
-    public static void logIn() {
+    public static void logIn() throws Exception {
 
         System.out.println(" ");
         System.out.println("Please use our sophisticated and secure log in system to access inventory");
@@ -53,12 +53,13 @@ public final class User {
 
         if (Inventory.SYSTEM_USERS.containsKey(userName)) {
             if (Inventory.SYSTEM_USERS.get(userName).getPassword().equals(userPass)) {
-                if (Inventory.SYSTEM_USERS.get(userName).getHasAccess() == true) {
+                if (Inventory.SYSTEM_USERS.get(userName).getHasAccess()) {
                     while (true) {
+                        System.out.printf("Greetings, %s\t", Inventory.SYSTEM_USERS.get(userName).getName());
                         InventoryFunctions.displayInventory();
                     }
                 } else {
-                    System.out.println("You have been fired for !drinking on the job.");
+                    System.out.printf("Come on %s, you have been fired for !drinking on the job.\t", Inventory.SYSTEM_USERS.get(userName).getName());
                     logIn();
                 }
             } else {

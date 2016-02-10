@@ -14,7 +14,7 @@ public class Inventory {
 
 
 
-    public static void main (String[] args)  {
+    public static void main (String[] args) throws Exception {
 
         //hard coded SYSTEM_USERS
         SYSTEM_USERS.put("oakey", new User("Zach Oakes", "sekao", true));

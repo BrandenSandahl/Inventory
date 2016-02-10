@@ -14,22 +14,21 @@ public class InventoryFunctions {
     static final String[] CATEGORIES = {"Beer", "Food", "Liquor", "Merchandise", "Wine"};
 
 
-    public static void displayInventory() {
+    public static void displayInventory() throws Exception {
         if (!Inventory.items.isEmpty()) {
-            System.out.printf("#\t%s\t\t%s\t\t\t%s%n", "QUANTITY", "ITEM", "CATEGORY");
+            System.out.printf("%-5s %-18s %-15s %s%n", "#", "QUANTITY", "ITEM", "CATEGORY");
             int i = 1; //Used to place numbers by items
             for (InventoryItem item : Inventory.items) {
-                //System.out.println(i + ". " + "[" + item.getCount() + "] " + item.getItem());
-                System.out.printf("%d.\t [%d]\t\t\t %s\t\t\t%n", i, item.getCount(), item.getItem());
+                System.out.printf("%d%-5s %s%d%s %20.30s %18s%n", i, ".", "[", item.getCount(), "]", item.getItem(), item.getCategory());
                 i++;
             }
         }
         System.out.println();
         System.out.println("Inventory Management System");
-        System.out.println("1. Enter a New Inventory Item ");
-        System.out.println("2. Remove an Inventory Item ");
-        System.out.println("3. Update quantity of item");
-        System.out.println("4. Exit Inventory Manager");
+        System.out.println("\t1. Enter a New Inventory Item ");
+        System.out.println("\t2. Remove an Inventory Item ");
+        System.out.println("\t3. Update quantity of item");
+        System.out.println("\t4. Exit Inventory Manager");
 
         String userSelection = nextLine();
 
@@ -50,7 +49,7 @@ public class InventoryFunctions {
         }
     }
 
-    public static void enterItem() {
+    public static void enterItem() throws Exception {
         //item
         System.out.println("Please enter the item description");
         String itemDescription = nextLine();
@@ -67,13 +66,35 @@ public class InventoryFunctions {
         } while (!isValid);
         System.out.println("Please choose an item category");
         displayCategories();
-        String category = CATEGORIES[Integer.parseInt(nextLine()) - 1]; //this is a pretty crazy line. Doing a lot of stuff in one line. Too much? maybe. Some would say, not enough sir. not enough
+        //this is a pretty crazy line. Doing a lot of stuff in one line. Too much? maybe. Some would say, not enough sir. not enough
+        String category = (CATEGORIES[(Integer.parseInt(nextLine()) - 1)]);
 
-        Inventory.items.add(new InventoryItem(itemDescription, itemQuantity));
-
+        // 0 beer 1 food 2 liquor 3 merchandise 4 wine
+        switch (category) {
+            case "Beer":
+                Inventory.items.add(new Beer(itemDescription, itemQuantity));
+                break;
+            case "Food":
+                Inventory.items.add(new Food(itemDescription, itemQuantity));
+                break;
+            case "Liquor":
+                Inventory.items.add(new Liquor(itemDescription, itemQuantity));
+                break;
+            case "Merchandise":
+                Inventory.items.add(new Merchandise(itemDescription, itemQuantity));
+                break;
+            case "Wine":
+                Inventory.items.add(new Merchandise(itemDescription, itemQuantity));
+                break;
+            default:
+                System.out.printf("Something has gone terribly wrong");
+                throw new Exception();
+        }
 
         /**
          * None of this shit works.
+         * it's just here for me to reflect (pun) upon how badly i failed at making this work
+         *
         // Class c = Class.forName(category);
 
         //System.out.println(Class.forName(category));
@@ -82,8 +103,6 @@ public class InventoryFunctions {
         //Class.forName(CATEGORIES[Integer.parseInt(nextLine())]);
 
        //Inventory.items.add(new c(itemDescription, itemQuantity));
-
-
 
          */
     }
@@ -120,7 +139,7 @@ public class InventoryFunctions {
         }
     }
 
-    public static void logOut() {
+    public static void logOut() throws Exception {
         System.out.println("Thanks");
         System.out.println("And remember, ");
         System.out.println("The Horadric cube should not be in your stash.");
