@@ -1,5 +1,3 @@
-
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,8 +10,6 @@ public class Inventory {
     static final HashMap<String, User> SYSTEM_USERS = new HashMap<>();
 
 
-
-
     public static void main (String[] args) throws Exception {
 
         //hard coded SYSTEM_USERS
@@ -24,9 +20,5 @@ public class Inventory {
         //Start 'er up
         User.logIn();
 
-
     }
-
-
-
 }

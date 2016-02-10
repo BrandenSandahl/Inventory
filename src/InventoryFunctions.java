@@ -1,8 +1,6 @@
 
 import java.util.Scanner;
 
-
-
 /**
  * Created by branden on 2/8/16 at 12:47.
  */
@@ -66,8 +64,7 @@ public class InventoryFunctions {
         } while (!isValid);
         System.out.println("Please choose an item category");
         displayCategories();
-        //this is a pretty crazy line. Doing a lot of stuff in one line. Too much? maybe. Some would say, not enough sir. not enough
-        String category = (CATEGORIES[(Integer.parseInt(nextLine()) - 1)]);
+        String category = (CATEGORIES[(Integer.parseInt(nextLine()) - 1)]);   //get the name from the index number
 
         // 0 beer 1 food 2 liquor 3 merchandise 4 wine
         switch (category) {
@@ -88,7 +85,7 @@ public class InventoryFunctions {
                 break;
             default:
                 System.out.printf("Something has gone terribly wrong");
-                throw new Exception();
+                throw new Exception();  //breaking the program because this SHOULD work. If it didn't I don't want to keep running I want to know what has happened.
         }
 
         /**
@@ -141,8 +138,6 @@ public class InventoryFunctions {
 
     public static void logOut() throws Exception {
         System.out.println("Thanks");
-        System.out.println("And remember, ");
-        System.out.println("The Horadric cube should not be in your stash.");
         System.out.println("");
         User.logIn();
 
