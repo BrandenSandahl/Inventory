@@ -3,16 +3,20 @@
  */
 public final class User {
 
+    //vars
     private String name, password;
     private boolean hasAccess;
 
 
+    //constructor
     public User(String name, String password, boolean hasAccess) {
         setName(name);
         setPassword(password);
         setHasAccess(hasAccess);
     }
 
+
+    //getters and setters
     public String getName() {
         return name;
     }
@@ -38,8 +42,7 @@ public final class User {
     }
 
 
-    //log in control method
-
+    //log in control method Attached to user class because...it just is!
     public static void logIn() throws Exception {
 
         System.out.println(" ");
@@ -51,24 +54,27 @@ public final class User {
         String userPass = InventoryFunctions.nextLine();
 
 
-        if (Inventory.SYSTEM_USERS.containsKey(userName)) {
-            if (Inventory.SYSTEM_USERS.get(userName).getPassword().equals(userPass)) {
-                if (Inventory.SYSTEM_USERS.get(userName).getHasAccess()) {
+        //Start of a whole pile of ifs
+        if (Inventory.SYSTEM_USERS.containsKey(userName)) {    //if the HashMap has the name that the user entered (as a key)
+            if (Inventory.SYSTEM_USERS.get(userName).getPassword().equals(userPass)) {       //if the password the user entered equals the one we set
+                if (Inventory.SYSTEM_USERS.get(userName).getHasAccess()) {   //if the user has been granted access
                     while (true) {
-                        System.out.printf("Greetings, %s\t", Inventory.SYSTEM_USERS.get(userName).getName());
+                        System.out.printf("Greetings, %s\t", Inventory.SYSTEM_USERS.get(userName).getName());  //greet and go into inventory system
                         InventoryFunctions.displayInventory();
                     }
-                } else {
-                    System.out.printf("Come on %s, you have been fired for !drinking on the job.\t", Inventory.SYSTEM_USERS.get(userName).getName());
+                } else {  //otherwise the user was not granted access. Silly message.
+                    System.out.printf("Come on %s, how are you not in jail?\t", Inventory.SYSTEM_USERS.get(userName).getName());
                     logIn();
                 }
-            } else {
+            } else {  //otherwise the user did not enter the right password user name combo
                 System.out.println("Invalid name or password. Try again"); //not telling them which one because it's too much work (also it's not so secure)
                 logIn();
             }
-        } else {
+        } else {  //otherwise there is no record of the user
             System.out.println("You are not in our system. Please contact Branden. But not at home. Or during office hours. Definitely not on weekends. Actually, call Doug.");
             logIn();
         }
-    }
+    }    //PHEW!!
+
+
 }
