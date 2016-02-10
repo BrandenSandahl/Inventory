@@ -19,7 +19,7 @@ public class Inventory {
         //hard coded SYSTEM_USERS
         SYSTEM_USERS.put("oakey", new User("Zach Oakes", "sekao", true));
         SYSTEM_USERS.put("branden7", new User("Branden Sandahl", "secret", true));
-        SYSTEM_USERS.put("frank", new User("Frank Reynolds", "underbridges", false));
+        SYSTEM_USERS.put("warthog", new User("Frank Reynolds", "underbridges", false));
 
         //Start 'er up
         User.logIn();
