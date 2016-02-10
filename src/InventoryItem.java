@@ -12,9 +12,6 @@ public class InventoryItem {
 
 // Constructors if used
 
-    public InventoryItem() {
-
-    }
 
 
     public InventoryItem(String item, int count) {

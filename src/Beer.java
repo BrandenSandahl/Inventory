@@ -3,6 +3,7 @@
  */
 public class Beer extends InventoryItem {
 
+
     public Beer(String item, int count) {
         super(item, count);
         this.setCategory("beer");
