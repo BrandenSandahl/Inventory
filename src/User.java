@@ -59,7 +59,7 @@ public final class User {
             if (Inventory.SYSTEM_USERS.get(userName).getPassword().equals(userPass)) {       //if the password the user entered equals the one we set
                 if (Inventory.SYSTEM_USERS.get(userName).getHasAccess()) {   //if the user has been granted access
                     while (true) {
-                        System.out.printf("Greetings, %s\t", Inventory.SYSTEM_USERS.get(userName).getName());  //greet and go into inventory system
+                        System.out.printf("Logged in as, %s\t\n", Inventory.SYSTEM_USERS.get(userName).getName());  //greet and go into inventory system
                         InventoryFunctions.displayInventory();
                     }
                 } else {  //otherwise the user was not granted access. Silly message.
